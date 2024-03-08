@@ -1,0 +1,90 @@
+{
+    "easycom" : {
+        "^u-(.*)" : "uview-ui/components/u-$1/u-$1.vue"
+    },
+    "pages" : [
+        {
+            "path" : "pages/bookstore/bookstore",
+            "style" : {
+                "navigationStyle" : "custom"
+            }
+        },
+        {
+            "path" : "pages/category/category",
+            "style" : {
+                "navigationStyle" : "custom"
+            }
+        },
+        {
+            "path" : "pages/bookshelf/bookshelf",
+            "style" : {
+                "navigationStyle" : "custom"
+            }
+        },
+        {
+            "path" : "pages/usercenter/usercenter",
+            "style" : {
+                "navigationStyle" : "custom",
+                "app-plus" : {
+                    "scrollIndicator" : "none"
+                }
+            }
+        },
+        {
+            "path" : "pages/benefits/benefits",
+            "style" : {
+                "navigationBarTitleText" : "福利"
+            }
+        },
+        {
+            "path" : "App",
+            "style" : {}
+        }
+    ],
+    "globalStyle" : {
+        "navigationBarTextStyle" : "black",
+        "navigationBarTitleText" : "uni-app",
+        "navigationBarBackgroundColor" : "#F8F8F8",
+        "backgroundColor" : "#F8F8F8"
+    },
+    "tabBar" : {
+        "color" : "#666",
+        "selectedColor" : "#d4247b",
+        "backgroundColor" : "#fff",
+        "borderStyle" : "black",
+        "iconWidth" : "22",
+        "height" : "50",
+        "list" : [
+            {
+                "pagePath" : "pages/bookstore/bookstore",
+                "text" : "书城",
+                "iconPath" : "./static/shouye.png",
+                "selectedIconPath" : "./static/shouyex.png"
+            },
+            {
+                "pagePath" : "pages/category/category",
+                "text" : "分类",
+                "iconPath" : "./static/caidan.png",
+                "selectedIconPath" : "./static/caidanx.png"
+            },
+            {
+                "pagePath" : "pages/benefits/benefits",
+                "text" : "福利",
+                "iconPath" : "./static/dakai.png",
+                "selectedIconPath" : "./static/dakaix.png"
+            },
+            {
+                "pagePath" : "pages/bookshelf/bookshelf",
+                "text" : "书架",
+                "iconPath" : "./static/mingxi.png",
+                "selectedIconPath" : "./static/mingxix.png"
+            },
+            {
+                "pagePath" : "pages/usercenter/usercenter",
+                "text" : "我的",
+                "iconPath" : "./static/bianzubeifen.png",
+                "selectedIconPath" : "./static/bianzubeifenx.png"
+            }
+        ]
+    }
+}
