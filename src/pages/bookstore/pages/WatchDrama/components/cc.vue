@@ -91,8 +91,9 @@ export default {
         this.$set(this.list[index], "scale", 1);
         this.$set(this.list[0], "scale", 1.2);
       });
-      this.select(".item", { size: true }, (rects) => {
+      this.select(".item", { size: true,rect: true }, (rects) => {
         this.childrenWidth=rects[0].width;
+        console.log(rects[1].left,this.childrenWidth);
       });
     },
     transition(e) {
@@ -101,8 +102,7 @@ export default {
             arr=[]
             rects.forEach((item, index) => {
                 
-                 if((Math.abs(item.left) - 30) < this.childrenWidth){
-                    console.log(item, index)
+                 if(item.left < this.childrenWidth +30 && item.left > -this.childrenWidth + 30){
                     arr.push({
                         ...item,
                         index
@@ -113,15 +113,14 @@ export default {
         });
         let leftwidth=e.detail.dx;
         let scrollLeft=Math.abs(leftwidth)/this.childrenWidth*0.2;
+        if( arr.length != 2 )  return
         if(leftwidth>0){
-            
             this.list[arr[arr.length-1].index].scale=1+scrollLeft;
-            this.list[arr[0].index].scale=1-scrollLeft;
+            this.list[arr[0].index].scale=1.2-scrollLeft;
         }else{
-            // console.log(arr)
-            this.list[arr[arr.length-1].index].scale=1-scrollLeft;
+            console.log(arr[arr.length-1].index,arr[0].index)
+            this.list[arr[arr.length-1].index].scale=1.2-scrollLeft;
             this.list[arr[0].index].scale=1+scrollLeft;
-            
         }
         },
   },
