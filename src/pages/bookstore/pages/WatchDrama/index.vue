@@ -9,14 +9,12 @@
       </template>
       <template slot="context">
         <WatchDramaSwiper/>
-        <cc/>
       </template>
     </WatchDramaCard>
   </view>
 </template>
 
 <script>
-import cc from "./components/cc.vue";
 import WatchDramaCard from "./components/WatchDramaCard.vue";
 import WatchDramaSwiper from "./components/WatchDramaSwiper.vue";
 export default {
@@ -24,7 +22,6 @@ export default {
   components: {
     WatchDramaCard,
     WatchDramaSwiper,
-    cc
   },
   data() {
     return {

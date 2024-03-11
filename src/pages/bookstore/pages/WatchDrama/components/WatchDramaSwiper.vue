@@ -5,13 +5,14 @@
     @scroll="scroll"
     @touchend="scrollend"
     :scroll-with-animation="true"
-    :scroll-into-view="scrollId"
+    :scroll-left="scrollLeft"
+    @touchmove.stop
   >
     <view
       v-for="(item, index) in list"
       :key="index"
       class="scrollbox-item"
-      :id="`item${index}`"
+      @click="clickitem(index)"
     >
       <view class="imagebox">
         <image
@@ -22,7 +23,6 @@
       </view>
       <view class="name">{{ item.name }}</view>
       <view class="info">{{ item.info }}</view>
-      {{ index }}
     </view>
   </scroll-view>
 </template>
@@ -32,7 +32,7 @@ export default {
   name: "WatchDramaSwiper",
   data() {
     return {
-      scrollId: 'item0',
+      scrollLeft: 0,
       list: [
         {
           Imageurl: require("../../../../../static/fhxx.png"),
@@ -77,13 +77,16 @@ export default {
       ],
       query: uni.createSelectorQuery().in(this),
       childrenWidth: 0,
-      boxleft: 0,
     };
   },
   mounted() {
     this.init();
   },
   methods: {
+    clickitem(index){
+      if(index>this.list.length-3) return
+      this.scrollLeft=this.childrenWidth*index
+    },
     select(elementsName, options = {}, fn) {
       /**
        * @param {String} elementsName 选择器
@@ -112,15 +115,12 @@ export default {
         .exec();
       this.list.forEach((item, index) => {
         this.$set(item, "scale", 1);
-        if(index === 0){
+        if (index === 0) {
           this.$set(item, "scale", 1.2);
         }
       });
     },
     scroll(e) {
-      // const { scrollLeft } = e.detail;
-      // const index = Math.round(scrollLeft / this.childrenWidth);
-      // this.scrollLeft = index * this.childrenWidth + this.boxleft;
       this.select(".scrollbox-item", { rect: true }, (rects) => {
         rects.forEach((rect, index) => {
           if (
@@ -134,6 +134,7 @@ export default {
           }
         });
       });
+      this.scrollLeft = e.detail.scrollLeft;
     },
     gatscale(num) {
       let a = this.childrenWidth - Math.abs(num);
@@ -141,34 +142,15 @@ export default {
     },
     scrollend() {
       let minValue = undefined;
-      function findMin(arr) {
-        let min = arr[0];
-        let len = undefined;
-        for (let i = 1; i < arr.length; i++) {
-          if (arr[i] < min) {
-            min = arr[i];
-            len = i;
-          }
-        }
-        return { min: min, len: len };
+      let arr = [];
+      for (let i = 0; i < this.list.length; i++) {
+        arr.push(Math.abs(this.childrenWidth * i - this.scrollLeft));
       }
-      this.select(".scrollbox-item", { rect: true }, (rects) => {
-        rects = rects.map((rect) => {
-          return Math.abs(rect.left);
-        });
-        minValue = findMin(rects);
-      });
+      minValue = arr.indexOf(Math.min(...arr));
       this.$nextTick(() => {
         requestAnimationFrame(() => {
-          if(minValue.len===undefined){
-            return
-          }
-          if(this.scrollId===`item${minValue.len}`){
-            this.scrollId=undefined;
-          }
-          this.scrollId=`item${minValue.len}`;
-
-          console.log(this.scrollId);
+          this.scrollLeft = minValue * this.childrenWidth;
+          // console.log(this.scrollLeft,"设置");
         });
       });
     },
@@ -186,17 +168,16 @@ export default {
     // box-sizing: border-box;
     vertical-align: middle;
     display: inline-block;
-    width: 200rpx;
-    padding-right: 30rpx;
+    width: 230rpx;
     display: inline-flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
-    &:last-child{
+    &:last-child {
       padding-right: 0;
     }
     .imagebox {
-      width: 100%;
+      width: 200rpx;
       height: 280rpx;
       display: flex;
       align-items: center;
@@ -205,7 +186,7 @@ export default {
     .name {
       font-size: 28rpx;
       margin: 10rpx 0;
-      width: 100%;
+      width: 200rpx;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
