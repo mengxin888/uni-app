@@ -22,4 +22,8 @@
 	height: 40rpx;
 	width: 40rpx;
 }
+image{
+  height: 100%;
+  width: 100%;
+}
 </style>

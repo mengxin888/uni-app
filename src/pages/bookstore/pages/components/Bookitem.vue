@@ -8,7 +8,7 @@
           <view class="context-item-footer-title"
             >九龙夺嫡，皇兄何故教父皇修仙</view
           >
-          <view class="context-item-footer-info"
+          <view class="context-item-footer-info" v-if="isinfo"
             >国内高端的论文服务机构，专业提供“论文查重”、“论文指导”、“论文发表服务”，7年的运营沉淀
             积累了丰富的运作经验建立了一套完善的服务体系，秉承“服务至上，诚信为本”的宗旨，为近万名客户提供了优质的服务。</view
           >
@@ -23,7 +23,12 @@
 <script>
 export default {
     name: 'Bookitem',
-
+    props: {
+        isinfo: {
+            type: Boolean,
+            default: true
+        }
+    },
     data() {
         return {
             

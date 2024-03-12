@@ -4,7 +4,7 @@
       <BooklistH :list1="tabsx" />
     </view>
     <view class="tj-context">
-      <Bookitem v-for="(index, item) in 20" :key="index" />
+      <Bookitem v-for="(index) in 20" :key="index" />
     </view>
   </view>
 </template>

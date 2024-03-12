@@ -1,13 +1,15 @@
 <template>
-    <view class="box" :style="{background:backGround}">
+    <view class="cardbox" :style="{background:backGround}">
      <view class="top">
       <slot name="title"></slot>
-      <view class="right"> 
-        <text>{{ rightname }}</text>
+      <view class="right" :style='`color:${rightcolor}`'> 
+        <text >{{ rightname }}</text>
         <u-icon name="arrow-right" size="10"></u-icon>
     </view>
      </view>
-     <slot name="context"></slot>
+     <view class="context">
+        <slot name="context" ></slot>
+     </view>
     </view>
 </template>
 
@@ -22,6 +24,10 @@ export default {
         rightname:{
             type:String,
             default:'更多'
+        },
+        rightcolor:{
+            type:String,
+            default:'balck'
         }
     },
     data() {
@@ -31,6 +37,7 @@ export default {
     },
 
     mounted() {
+        console.log(this.rightcolor)
         
     },
 
@@ -41,10 +48,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.box{
+.cardbox{
     width: 100%;
     border-radius: 20rpx;
     padding: 30rpx;
+    margin-bottom:30rpx;
+    box-sizing: border-box;
     .top{
         width: 100%;
         display: flex;
@@ -57,5 +66,8 @@ export default {
             font-size: 25rpx;
         }
     }
+}
+.context{
+    margin: 30rpx 0;
 }
 </style>
