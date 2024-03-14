@@ -4,7 +4,7 @@
     <view class="listenbook-context">
       <view>
         <u-grid :border="false" @click="click" col="3">
-          <u-grid-item v-for="(item, index) in 30">
+          <u-grid-item v-for="(index) in 30" :key="index">
             <Booklistitem/>
           </u-grid-item>
         </u-grid>

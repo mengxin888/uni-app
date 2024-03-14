@@ -36,6 +36,7 @@ export default {
 .listenbook-view-item {
   padding: 0 30rpx 20rpx 30rpx;
   width: 200rpx;
+  display: inline-block;
   .image {
     height: 250rpx;
     width: 100%;

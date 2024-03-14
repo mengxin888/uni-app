@@ -1,5 +1,5 @@
 <template>
-    <view class="cardbox" :style="{background:backGround}">
+    <view class="cardbox" :style="`{background:${backGround},borderRadius:${borderRadiusvalue+'rpx'}}`">
      <view class="top">
       <slot name="title"></slot>
       <view class="right" :style='`color:${rightcolor}`'> 
@@ -28,6 +28,13 @@ export default {
         rightcolor:{
             type:String,
             default:'balck'
+        },
+        borderRadius:{
+            validator: function(value) {
+        // 自定义验证逻辑，判断值是否为字符串或布尔值
+        return typeof value === 'number' || typeof value === 'boolean';
+      },
+            default:20
         }
     },
     data() {
@@ -40,7 +47,19 @@ export default {
         console.log(this.rightcolor)
         
     },
-
+     computed: {
+        borderRadiusvalue(){
+              if(typeof this.borderRadius ==='boolean'){
+                if(this.borderRadius===true){
+                  return 20
+                }else{
+                  return 0
+                }
+              }else{
+                return this.borderRadius
+              }
+        }
+     },
     methods: {
         
     },

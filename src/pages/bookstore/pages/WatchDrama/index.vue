@@ -142,7 +142,7 @@
 
 <script>
 import WatchDramaSwiper1Vue from "./components/WatchDramaSwiper1.vue";
-import WatchDramaCard from "./components/WatchDramaCard.vue";
+import WatchDramaCard from "../components/WatchDramaCard.vue";
 import WatchDramaSwiper from "./components/WatchDramaSwiper.vue";
 import BookitemVue from '../components/Bookitem.vue';
 export default {
