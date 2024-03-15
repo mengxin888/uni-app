@@ -12,7 +12,6 @@
       v-for="(item, index) in valuelist"
       :key="index"
       class="scrollbox-item"
-      @click="clickitem(index)"
     >
       <slot name="top" :row="item"></slot>
       <view class="imagebox">
@@ -55,10 +54,6 @@ export default {
     this.init();
   },
   methods: {
-    clickitem(index) {
-      if (index > this.valuelist.length - 3) return;
-      this.scrollLeft = this.childrenWidth * index;
-    },
     select(elementsName, options = {}, fn) {
       /**
        * @param {String} elementsName 选择器
@@ -106,7 +101,6 @@ export default {
           }
         });
       });
-      this.scrollLeft = e.detail.scrollLeft;
     },
     gatscale(num) {
       let a = this.childrenWidth - Math.abs(num);
@@ -119,11 +113,7 @@ export default {
         arr.push(Math.abs(this.childrenWidth * i - this.scrollLeft));
       }
       minValue = arr.indexOf(Math.min(...arr));
-      this.$nextTick(() => {
-        requestAnimationFrame(() => {
-          this.scrollLeft = minValue * this.childrenWidth;
-        });
-      });
+      this.scrollLeft = minValue * this.childrenWidth;
     },
   },
 };

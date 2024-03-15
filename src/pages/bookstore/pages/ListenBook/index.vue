@@ -1,6 +1,6 @@
 <template>
   <view class="listenbook-view">
-    <BooklistH :list1="list1" />
+    <BooklistH :list1="list1"/>
     <view class="listenbook-context">
       <view>
         <u-grid :border="false" @click="click" col="3">

@@ -71,7 +71,6 @@ export default {
     width: 100%;
     border-radius: 20rpx;
     padding: 30rpx;
-    margin-bottom:30rpx;
     box-sizing: border-box;
     .top{
         width: 100%;
@@ -87,6 +86,5 @@ export default {
     }
 }
 .context{
-    margin: 30rpx 0;
 }
 </style>

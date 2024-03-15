@@ -2,7 +2,7 @@
     <view class="Classic-box">
         <BookStoreTab/>
         <view class="context-box">
-            <Bookitem v-for="(index, item) in 20" :key="index"/>
+            <Bookitem v-for="(index) in 20" :key="index"/>
         </view>
     </view>
 </template>
