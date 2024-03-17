@@ -83,7 +83,7 @@ export default {
                 .info{
                     font-size: 25rpx;
                     color: #999;
-                    margin: 20rpx 0;
+                    margin: 10rpx 0;
                 }
                 .tabs{
                     font-size: 30rpx;

@@ -142,6 +142,7 @@ export default {
   .ONEtitle {
     display: flex;
     justify-content: start;
+    align-items: center;
     list-style: none;
     padding: 0;
     li {

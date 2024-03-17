@@ -86,5 +86,6 @@ export default {
     }
 }
 .context{
+    margin-top: 20rpx;
 }
 </style>

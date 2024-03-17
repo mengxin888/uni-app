@@ -5,7 +5,7 @@
       :lineHeight="0"
       :lineWidth="0"    
       :itemStyle="{
-        padding: '5px 8px 5px 0',
+        padding: '5px 8px',
         borderRadius: '3px',
         backgroundColor: '#f5f5f5',
         color: '#666666',
@@ -16,7 +16,7 @@
         padding: '5px 8px',
         borderRadius: '3px',
         color: '#666666',
-        margin: '0 5px',
+        marginRight: '5px',
       }"
     >
       <view slot="right" style="padding-left: 4px">
