@@ -19,7 +19,7 @@
       </template>
       <template slot="context">
         <!-- <WatchDramaSwiper /> -->
-        <WatchDramaSwiper1Vue :valuelist="list" :scalestart="1" :scaleend="1.2">
+        <WatchDramaSwiperVue :valuelist="list" :scalestart="1" :scaleend="1.2">
           <template slot-scope="{ row }">
             <image :src="row.Imageurl" mode="scaleToFill" />
           </template>
@@ -27,7 +27,7 @@
             <view class="name">{{ row.name }}</view>
             <view class="info">{{ row.info }}</view>
           </template>
-        </WatchDramaSwiper1Vue>
+        </WatchDramaSwiperVue>
       </template>
     </WatchDramaCard>
     <WatchDramaCard rightname="全部">
@@ -141,7 +141,7 @@
 </template>
 
 <script>
-import WatchDramaSwiper1Vue from "./components/WatchDramaSwiper1.vue";
+import WatchDramaSwiperVue from "./components/WatchDramaSwiper.vue";
 import WatchDramaCard from "../components/WatchDramaCard.vue";
 import WatchDramaSwiper from "./components/WatchDramaSwiper.vue";
 import BookitemVue from '../components/Bookitem.vue';
@@ -151,7 +151,7 @@ export default {
     BookitemVue,
     WatchDramaCard,
     WatchDramaSwiper,
-    WatchDramaSwiper1Vue,
+    WatchDramaSwiperVue,
   },
   data() {
     return {

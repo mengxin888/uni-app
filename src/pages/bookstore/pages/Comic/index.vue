@@ -37,11 +37,12 @@
       </template>
       <template slot="context">
         <swiper class="swiper" next-margin="80rpx">
-          <swiper-item v-for="(index) in 5" :key="index" class="item">
+          <swiper-item v-for="index in 5" :key="index" class="item">
             <view class="scroll-item-box">
               <view class="box-top">
                 <text class="comments">
-                  <text class="comments-context">“知己知彼，将心比心。酒逢知己饮，诗向会人吟。相识满天下，知心能几人？相逢好似初相识，到老终无怨恨心。
+                  <text class="comments-context" ref="text"
+                    >“知己知彼，将心比心。酒逢知己饮，诗向会人吟。相识满天下，知心能几人？相逢好似初相识，到老终无怨恨心。
                   </text>
                 </text>
                 <view class="comments-author"></view>
@@ -69,12 +70,12 @@
       </template>
     </WatchDramaCard>
     <view class="live-you-books">
-      <u-divider text="猜你喜欢"></u-divider>
+      <text class="live-you-books-title">猜你喜欢</text>
     </view>
     <view class="live-you-books-box">
       <view class="context-box">
-            <Bookitem v-for="(index) in 20" :key="index"/>
-        </view>
+        <Bookitem v-for="index in 20" :key="index" />
+      </view>
     </view>
   </view>
 </template>
@@ -127,9 +128,20 @@ export default {
     WatchDramaCard,
     BooklistHVue,
   },
-  mounted() {},
+  mounted() {
+    this.init();
+  },
 
-  methods: {},
+  methods: {
+    init() {
+      let element = this.$refs.text;
+      Array.from(element).forEach((item, index) => {
+        let res = item.$el.innerText;
+        let arr = res.split("");
+        item.$el.innerText = arr.slice(0, 40).join("");
+      });
+    },
+  },
 };
 </script>
 
@@ -164,101 +176,134 @@ export default {
     font-weight: 800;
   }
   .swiper {
-    margin-top:30rpx;
+    margin-top: 30rpx;
     width: 100%;
     height: 320rpx;
-    .item{
-      
+    .item {
       .scroll-item-box {
         border-radius: 30rpx;
-      overflow: hidden;
-      box-sizing: border-box;
-      padding: 30rpx;
-      background: red;
-      width: 95%;
-      display: flex;
-      flex-direction: column;
-      justify-content: start;
-      .box-top {
-        border-bottom: 1rpx dashed #fff;
-        // height: 200rpx;
-        padding: 10rpx;
-        .comments {
-          width: 100%;
-          // 3行多余省略
-          .comments-context {
-            text-indent: 2em;
-            overflow: hidden;
-            // text-overflow: ellipsis;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            &::after {
-              content: "...”";
-              display: inline; 
-            }
-          }
-        }
-      }
-      .item-bottom {
+        overflow: hidden;
+        box-sizing: border-box;
+        padding: 30rpx;
+        background: red;
+        width: 95%;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding-top: 30rpx;
-        .item-bottom-left {
-          display: flex;
-          justify-content: start;
-          align-items: center;
-          .imagebox {
-            width: 60rpx;
-            height: 80rpx;
-            image {
-              width: 100%;
-              height: 100%;
-            }
-          }
-          .bottom-info {
-            margin-left: 20rpx;
-            display: flex;
-            flex-direction: column;
-            padding: 10rpx 0;
-            .info-name {
-              font-size: 30rpx;
-              font-weight: 800;
-            }
-            .author {
-              font-size: 22rpx;
-              color: #999;
+        flex-direction: column;
+        justify-content: start;
+        .box-top {
+          border-bottom: 1rpx dashed #fff;
+          // height: 200rpx;
+          padding: 10rpx;
+          .comments {
+            width: 100%;
+            // 3行多余省略
+            .comments-context {
+              text-indent: 2em;
+              overflow: hidden;
+              // text-overflow: ellipsis;
+              display: -webkit-box;
+              -webkit-line-clamp: 3;
+              -webkit-box-orient: vertical;
+              &::after {
+                content: "...”";
+                display: inline;
+              }
             }
           }
         }
-        .item-bottom-right {
-          width: 100rpx;
-          height: 20rpx;
-          border-left: 1rpx solid #fff;
-          padding-left: 20rpx;
+        .item-bottom {
           display: flex;
-          justify-content: center;
+          justify-content: space-between;
           align-items: center;
-          .item-bottom-right-icon {
-            font-size: 50rpx;
-            color: black;
+          padding-top: 30rpx;
+          .item-bottom-left {
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            .imagebox {
+              width: 60rpx;
+              height: 80rpx;
+              image {
+                width: 100%;
+                height: 100%;
+              }
+            }
+            .bottom-info {
+              margin-left: 20rpx;
+              display: flex;
+              flex-direction: column;
+              padding: 10rpx 0;
+              .info-name {
+                font-size: 30rpx;
+                font-weight: 800;
+              }
+              .author {
+                font-size: 22rpx;
+                color: #999;
+              }
+            }
+          }
+          .item-bottom-right {
+            width: 100rpx;
+            height: 20rpx;
+            border-left: 1rpx solid #fff;
+            padding-left: 20rpx;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            .item-bottom-right-icon {
+              font-size: 50rpx;
+              color: black;
+            }
           }
         }
       }
     }
-    }
   }
-  .live-you-books{
+  .live-you-books {
+    margin: 30rpx 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  .live-you-books-title{
+    line-height: 25rpx;
+    position: relative;
+         &::before {
+        content: "";
+        position: absolute;
+        top: calc(25rpx / 2);
+        left: -110rpx;
+        display: inline-block;
+        width: 100rpx;
+        height: 1rpx;
+        border-bottom: 1rpx solid #999;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        top: calc(25rpx / 2);
+        right: -110rpx;
+        display: inline-block;
+        width: 100rpx;
+        height: 1rpx;
+        border-bottom: 1rpx solid #999;
+      }
   }
-
-  .live-you-books-box{
-    padding: 0 30rpx;
-    .context-box{
+    .live-you-books-box {
+      padding: 0 30rpx;
+      .context-box {
         display: flex;
         flex-wrap: wrap;
+         }
+  }
+  }
+
+  .live-you-books-box {
+    padding: 0 30rpx;
+    .context-box {
+      display: flex;
+      flex-wrap: wrap;
     }
   }
-  
 }
 </style>
