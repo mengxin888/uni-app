@@ -1,31 +1,23 @@
 <template>
  <view class="booktab-view">
      <view class="booktab-item">
-       <image
-        src="./icon/shu.png"
-        mode="scaleToFill"
-       />
+       <text class="iconfont icon-tab">&#xe634;</text>
         <text>完本</text>
      </view>
      <view class="booktab-item">
-        <image
+        <!-- <image
             src="./icon/NEW.png"
             mode="scaleToFill"
-        />
+        /> -->
+        <text class="iconfont icon-tab">&#xe68d;</text>
         <text>新书</text>
      </view>
      <view class="booktab-item">
-        <image
-            src="./icon/duanpian.png"
-            mode="scaleToFill"
-        />
+      <text class="iconfont icon-tab">&#xe643;</text>
         <text>短篇</text>
      </view>
      <view class="booktab-item">
-        <image
-         src="./icon/icon_shuqian.png"
-         mode="scaleToFill"
-        />
+      <text class="iconfont icon-tab">&#xe8a8;</text>
         <text>书摘</text>
      </view>
  </view>
@@ -66,6 +58,10 @@ export default {
       $index: index($backcolor, $color);
       .booktab-item:nth-child(#{$index}){
          background-color: $color;
+         .icon-tab{
+         // 保持原图宽高比例，显示长边
+           color:darken($color,20%);
+      }
       }
    }
   .booktab-item{
@@ -78,11 +74,9 @@ export default {
       width: 100rpx;
       height: 100rpx;
       padding: 10rpx;
-      image{
+      .icon-tab{
          // 保持原图宽高比例，显示长边
-            width: 60rpx;
-            height: 50rpx;
-            
+           font-size: 50rpx;
       }
       text{
            font-size: 30rpx;

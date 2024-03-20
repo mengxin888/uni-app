@@ -11,19 +11,22 @@
       </view>
     </view>
     <u-tabs
-    class="tabs"
-    :list="titlelist" @click="tabsclick" keyName="title" :current="pageindex"
-    :activeStyle="{
-        transform: 'scale(1.2)'
-    }"
-    :inactiveStyle="{
-        transform: 'scale(1)'
-    }"
-    lineHeight="0"
-    lineWidth="0"
-    :itemStyle="{
-      fontWeight: 'bold',
-    }"
+      class="tabs"
+      :list="titlelist"
+      @click="tabsclick"
+      keyName="title"
+      :current="pageindex"
+      :activeStyle="{
+        transform: 'scale(1.2)',
+      }"
+      :inactiveStyle="{
+        transform: 'scale(1)',
+      }"
+      lineHeight="0"
+      lineWidth="0"
+      :itemStyle="{
+        fontWeight: 'bold',
+      }"
     ></u-tabs>
   </view>
 </template>
@@ -76,17 +79,18 @@ export default {
       ],
     };
   },
-  mounted() {
-  },
+  mounted() {},
   methods: {
-    tabsclick(item,) {
-      console.log(item)
+    tabsclick(item) {
+      console.log(item);
       // 父元素传递index
-      this.$emit("getactiveindex", item.index);
+      this.$emit("getactiveindex", item);
     },
-    touchmoveindex(index){
-      this.pageindex = index
-    }
+    touchmoveindex(index) {
+      this.pageindex = index;
+      let data={...this.titlelist[index],index}
+      this.$emit("getactiveindex", data);
+    },
   },
 };
 </script>
@@ -130,7 +134,8 @@ export default {
       line-height: 70rpx;
     }
   }
-  .tabs{
+  .tabs {
+    // margin: 0 30rpx;
     height: 100rpx;
     line-height: 100rpx;
   }

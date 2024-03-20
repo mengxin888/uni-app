@@ -19,14 +19,7 @@
       </template>
       <template slot="context">
         <!-- <WatchDramaSwiper /> -->
-        <WatchDramaSwiperVue :valuelist="list" :scalestart="1" :scaleend="1.2">
-          <template slot-scope="{ row }">
-            <image :src="row.Imageurl" mode="scaleToFill" />
-          </template>
-          <template slot-scope="{ row }" slot="bottom">
-            <view class="name">{{ row.name }}</view>
-            <view class="info">{{ row.info }}</view>
-          </template>
+        <WatchDramaSwiperVue ref="swiper">
         </WatchDramaSwiperVue>
       </template>
     </WatchDramaCard>
@@ -153,6 +146,7 @@ export default {
     WatchDramaSwiper,
     WatchDramaSwiperVue,
   },
+  
   data() {
     return {
       isswitch: 0,

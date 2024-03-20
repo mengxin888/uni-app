@@ -43,9 +43,7 @@ export default {
         };
     },
 
-    mounted() {
-        console.log(this.rightcolor)
-        
+    mounted() {    
     },
      computed: {
         borderRadiusvalue(){
@@ -70,7 +68,7 @@ export default {
 .cardbox{
     width: 100%;
     border-radius: 20rpx;
-    padding: 30rpx;
+    padding: 30rpx 0;
     box-sizing: border-box;
     .top{
         width: 100%;

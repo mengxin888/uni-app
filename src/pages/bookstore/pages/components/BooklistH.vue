@@ -4,19 +4,17 @@
       :list="list1"
       :lineHeight="0"
       :lineWidth="0"    
-      :itemStyle="{
+      :inactiveStyle="{
+        backgroundColor: '#ffffff',
         padding: '5px 8px',
         borderRadius: '3px',
-        backgroundColor: '#f5f5f5',
         color: '#666666',
-        marginRight: '5px',
       }"
       :activeStyle="{
         backgroundColor:'#e6ddd6',
         padding: '5px 8px',
         borderRadius: '3px',
         color: '#666666',
-        marginRight: '5px',
       }"
     >
       <view slot="right" style="padding-left: 4px">

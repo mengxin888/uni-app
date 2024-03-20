@@ -131,9 +131,12 @@ export default {
   mounted() {
     this.init();
   },
-
+  onHide(){
+    console.log('我隐藏啦')
+  },
   methods: {
     init() {
+     
       let element = this.$refs.text;
       Array.from(element).forEach((item, index) => {
         let res = item.$el.innerText;
@@ -151,6 +154,8 @@ export default {
   width: 100%;
   height: 100%;
   overflow-y: scroll;
+  padding: 0 30rpx;
+  box-sizing: border-box;
   .ONEtitle {
     display: flex;
     justify-content: start;
